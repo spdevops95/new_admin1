@@ -36,8 +36,6 @@ pipeline {
                 sh 'your_deploy_command'
                 // Replace 'your_deploy_command' with the actual deployment command
             }
-        }
-    }
 
     post {
         success {
