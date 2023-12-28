@@ -1,9 +1,11 @@
 pipeline {
     agent {
-        kubernetes {
+        any
+        /* kubernetes {
             defaultContainer "test1"
             yamlFile 'deployment.yaml'
-        }
+        }*/
+    }
     
     environment {
         PATH = "/usr/local/bin:$PATH"
