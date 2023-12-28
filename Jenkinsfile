@@ -1,16 +1,13 @@
 pipeline {
-    agent none
-
-    stages {
-        stage('Build') {
-            agent {
-                kubernetes {
-                    label 'my-kubernetes-agent'
-                }
-            }
+    agent {
+        kubernetes {
+            defaultContainer "test1"
+            yamlFile 'deployment.yaml'
+        }
+    }
             steps {
                 echo 'Executing the build command...'
-                sh 'your_build_command'
+                
                 // Replace 'your_build_command' with the actual build command
             }
         }
@@ -18,7 +15,7 @@ pipeline {
         stage('Test') {
             agent {
                 kubernetes {
-                    label 'my-kubernetes-agent'
+                
                 }
             }
             steps {
