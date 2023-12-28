@@ -1,22 +1,22 @@
 pipeline {
     agent {
-        kubernetes {
-            defaultContainer "test1"
-            yamlFile 'deployment.yaml'
-        }
-           steps {
+        label 'my-kubernetes-agent'
+    }
+    
+    environment {
+        PATH = "/usr/local/bin:$PATH"
+    }
+
+    stages {
+        stage('Build') {
+            steps {
                 echo 'Executing the build command...'
-                
+                sh 'your_build_command'
                 // Replace 'your_build_command' with the actual build command
             }
         }
 
         stage('Test') {
-            agent {
-                kubernetes {
-                
-                }
-            }
             steps {
                 echo 'Executing the test command...'
                 sh 'your_test_command'
@@ -25,16 +25,13 @@ pipeline {
         }
 
         stage('Deploy') {
-            agent {
-                kubernetes {
-                    label 'my-kubernetes-agent'
-                }
-            }
             steps {
                 echo 'Executing the deployment command...'
                 sh 'your_deploy_command'
                 // Replace 'your_deploy_command' with the actual deployment command
             }
+        }
+    }
 
     post {
         success {
@@ -47,3 +44,4 @@ pipeline {
         }
     }
 }
+
