@@ -13,7 +13,7 @@ spec:
         app: your-app
     spec:
       containers:
-      - name: your-app-container
-        image: your-registry/your-image:latest
+      - name: test2
+        image: centos
         ports:
         - containerPort: 8080
