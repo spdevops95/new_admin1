@@ -4,8 +4,7 @@ pipeline {
             defaultContainer "test1"
             yamlFile 'deployment.yaml'
         }
-    }
-            steps {
+           steps {
                 echo 'Executing the build command...'
                 
                 // Replace 'your_build_command' with the actual build command
